@@ -9,4 +9,12 @@ class Agency extends Model
 {
     /** @use HasFactory<\Database\Factories\AgencyFactory> */
     use HasFactory;
+
+        protected $fillable = [
+            'name',
+            'country',
+            'type',
+    ];
 }
+
+
