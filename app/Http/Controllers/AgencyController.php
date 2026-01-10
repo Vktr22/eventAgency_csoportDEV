@@ -13,7 +13,7 @@ class AgencyController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Agency::all());
     }
 
     /**
@@ -29,7 +29,16 @@ class AgencyController extends Controller
      */
     public function store(StoreAgencyRequest $request)
     {
-        //
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'type' => 'required|string|max:50'
+        ]);
+
+        $agency = Agency::create($validated);
+        return response()->json($agency, 201);
+
     }
 
     /**
@@ -37,7 +46,10 @@ class AgencyController extends Controller
      */
     public function show(Agency $agency)
     {
-        //
+        
+        $agency = Agency::findOrFail($id);
+        return response()->json($agency);
+
     }
 
     /**
@@ -53,7 +65,11 @@ class AgencyController extends Controller
      */
     public function update(UpdateAgencyRequest $request, Agency $agency)
     {
-        //
+        
+        $agency = Agency::findOrFail($id);
+        $agency->update($request->all());
+        return response()->json($agency);
+
     }
 
     /**
@@ -61,6 +77,9 @@ class AgencyController extends Controller
      */
     public function destroy(Agency $agency)
     {
-        //
+        
+       Agency::destroy($id);
+        return response()->json(['message' => 'Agency sikeresen törölve']);
+
     }
 }
