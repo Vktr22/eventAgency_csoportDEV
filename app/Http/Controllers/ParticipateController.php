@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Participate;
 use App\Http\Requests\StoreParticipateRequest;
 use App\Http\Requests\UpdateParticipateRequest;
+use Illuminate\Routing\Controller;
 
 class ParticipateController extends Controller
 {

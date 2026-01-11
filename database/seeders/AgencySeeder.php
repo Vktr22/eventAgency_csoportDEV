@@ -15,21 +15,22 @@ class AgencySeeder extends Seeder
     public function run(): void
     {
 
-        Agency::factory()->create([[
+        Agency::create([
             'name' => 'Agency1',
             'country' => 'Magyar',
             'type' => 'a',
-        ],
-        [
+        ]);
+
+        Agency::create([
             'name' => 'Agency2',
             'country' => 'Olasz',
             'type' => 'a',
-        ],[
+        ]);
+
+        Agency::create([
             'name' => 'Agency3',
             'country' => 'Orosz',
             'type' => 'b',
-        ]
-        ]
-    );
+        ]);
     }
 }

@@ -10,6 +10,8 @@ class Agency extends Model
     /** @use HasFactory<\Database\Factories\AgencyFactory> */
     use HasFactory;
 
+        protected $primaryKey = 'agency_id';
+
         protected $fillable = [
             'name',
             'country',

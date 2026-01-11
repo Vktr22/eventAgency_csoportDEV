@@ -13,23 +13,22 @@ class ParticipateSeeder extends Seeder
      */
     public function run(): void
     {
-        Participate::factory()->createMany([
+        Participate::create(
     [
         'event_id' => 1,
         'user_id' => 2,
         'present' => true,
-    ],
-    [
+    ]);
+    Participate::create([
         'event_id' => 2,
         'user_id' => 1,
         'present' => false,
-    ],
-    [
+    ]);
+    Participate::create([
         'event_id' => 3,
         'user_id' => 3,
         'present' => true,
-    ],
-]);
+    ]);
 
     }
 }

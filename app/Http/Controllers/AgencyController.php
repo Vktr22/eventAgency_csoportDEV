@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agency;
 use App\Http\Requests\StoreAgencyRequest;
 use App\Http\Requests\UpdateAgencyRequest;
+use Illuminate\Routing\Controller;
 
 class AgencyController extends Controller
 {
@@ -44,7 +45,7 @@ class AgencyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Agency $agency)
+    public function show(Agency $id)
     {
         
         $agency = Agency::findOrFail($id);
@@ -63,7 +64,7 @@ class AgencyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAgencyRequest $request, Agency $agency)
+    public function update(UpdateAgencyRequest $request, Agency $id)
     {
         
         $agency = Agency::findOrFail($id);
@@ -75,7 +76,7 @@ class AgencyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Agency $agency)
+    public function destroy(Agency $id)
     {
         
        Agency::destroy($id);
