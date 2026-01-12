@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agency;
-use App\Http\Requests\StoreAgencyRequest;
-use App\Http\Requests\UpdateAgencyRequest;
 use Illuminate\Routing\Controller;
-
+use Illuminate\Http\Request;
 
 class AgencyController extends Controller
 {

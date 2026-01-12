@@ -14,5 +14,14 @@ class Participate extends Model
         'user_id',
         'present'
     ];
+
+        public function userKapcs() 
+    { 
+        return $this->belongsTo(User::class); 
+    }
+    public function eventKapcs() 
+    { 
+        return $this->belongsTo(EventModel::class); 
+    }
     
 }

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -23,7 +24,8 @@ class User extends Authenticatable
         'email',
         'vip',
         'password',
-        'permission'
+        'permission',
+        'role'
     ];
 
     /**
@@ -47,5 +49,24 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    use HasFactory, Notifiable, HasApiTokens;
+
+    public function isAdmin()  {
+        return $this->role === 0;
+    }
+
+
+    public function participatesKapcs() 
+    {
+        return $this->hasMany(Participate::class);
+    }
+
+    public function eventsKapcs() 
+    {
+        return $this->belongsToMany(EventModel::class, 'participates')
+            ->withPivot(['present'])
+            ->withTimestamps();
     }
 }

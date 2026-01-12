@@ -17,4 +17,18 @@ class EventModel extends Model
         'location',
         'status'
     ];
+    
+    public function agencyKapcs() {
+        return $this->belongsTo(Agency::class);
+    }
+
+    public function participatesKapcs() {
+        return $this->hasMany(Participate::class);
+    }
+
+    public function usersKapcs() {
+        return $this->belongsToMany(User::class, 'participates')
+            ->withPivot(['present'])
+            ->withTimestamps();
+    }
 }

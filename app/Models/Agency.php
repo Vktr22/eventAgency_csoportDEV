@@ -17,6 +17,11 @@ class Agency extends Model
             'country',
             'type',
     ];
+
+        public function eventsKapcs() 
+    {
+        return $this->hasMany(EventModel::class);
+    }
 }
 
 
